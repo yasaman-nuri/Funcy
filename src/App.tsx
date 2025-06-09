@@ -33,6 +33,14 @@ const App = () => {
     setSelectedIds(selectedIds.filter((itemId) => itemId !== id));
   };
 
+  const handleEditLaptop = (updatedLaptop: Laptop) => {
+    setLaptops(
+      laptops.map((laptop) =>
+        laptop.id === updatedLaptop.id ? updatedLaptop : laptop
+      )
+    );
+  };
+
   return (
     <div style={{ padding: "3rem" }}>
       <div style={{ textAlign: "center" }}>
@@ -57,6 +65,7 @@ const App = () => {
             isSelected={selectedIds.includes(item.id)}
             onAdd={() => toggleAdd(item.id)}
             onRemove={() => removeItem(item.id)}
+            onEdit={handleEditLaptop}
           />
         ))}
       </div>
